@@ -1,0 +1,37 @@
+<div class="page_title center">
+  <h1>Welcome to your online CookBook!</h1>
+  <h3>These are the recipes you have right now</h3>
+</div>
+
+
+<table>
+  <thead>
+    <th>Index</th>
+    <th>Done</th>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Prep Time</th>
+    <th>Difficulty</th>
+  </thead>
+  <tbody>
+  <% @cookbook.all.each_with_index do |recipe, ind| %>
+    <tr>
+      <td> <%= ind + 1 %> </td>
+      <td> <input type="checkbox" name="recipe_done" value="done" <% recipe.done? ? 'checked' : ''%> />
+      </td>
+      <td> <%= recipe.name %> </td>
+      <td> <%= recipe.description %> </td>
+      <td> <%= recipe.cooking_time %> </td>
+      <td> <%= recipe.difficulty %> </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<div class="center">
+  <h3> What do you want to do now?</h3>
+  <a href="add" class="button">Add a new item to your list</a>
+  <a href="remove" class="button">Remove one item from your list</a>
+  <a href="import" class="button">Import a recipe from recipe.com</a>
+</div>
+
